@@ -31,22 +31,18 @@
 	sudo systemctl status docker
 	docker -v
 
-#make
-	sudo apt update
-	sudo apt install make
-	
-
 #Instalacion akeneo PIM
 	mkdir pim
 	cd pim
-	#error de usuario, eliminar -u www-data
+	#error de usuario, eliminar -u www-data en caso de error:
+	#Could not delete /srv/pim:
 	docker run -ti -u www-data --rm \
     -e COMPOSER_MEMORY_LIMIT=4G \
     -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
     akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
     akeneo/pim-community-standard /srv/pim "6.0.*@stable"
     	sudo chmod 777 /home/usuario_EJEMPLO/pim 
-	#VER PERMISOS ESPECIFICOS
+	#VER PERMISOS ESPECIFICOS en ca
 	sudo make #dev o prod
 
 	#server: http://localhost:8080/
