@@ -39,7 +39,11 @@
 #Instalacion akeneo PIM
 	mkdir pim
 	cd pim
-	docker run -ti -u www-data --rm \ -e COMPOSER_MEMORY_LIMIT=4G \ -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \ akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \ akeneo/pim-community-standard /srv/pim "6.0.*@stable"
+	docker run -ti -u www-data --rm \
+    -e COMPOSER_MEMORY_LIMIT=4G \
+    -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
+    akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
+    akeneo/pim-community-standard /srv/pim "6.0.*@stable"
 	sudo make
 
 	#server: http://localhost:8080/
