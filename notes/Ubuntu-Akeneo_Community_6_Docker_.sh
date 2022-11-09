@@ -42,6 +42,10 @@
     akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
     akeneo/pim-community-standard /srv/pim "6.0.*@stable"
     	sudo chmod 777 /home/usuario_EJEMPLO/pim 
+	sudo find / -iname ".cache" #o yarn
+	#verificar los permisos de .cache/yarn, etc y ejecutar segun corresponda
+	#sudo chown usuario posicion/de/la/carpeta/que/se/encontro
+	#sudo chmod 777 posicion/de/la/carpeta/que/se/encontro
 	#VER PERMISOS ESPECIFICOS en ca
 	sudo make #dev o prod
 
