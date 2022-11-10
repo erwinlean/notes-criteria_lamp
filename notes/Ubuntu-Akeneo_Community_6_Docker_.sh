@@ -38,6 +38,11 @@
 	#sudo chown usuario posicion/de/la/carpeta/que/se/encontro
 	#sudo chmod 777 posicion/de/la/carpeta/que/se/encontro
 	#VER PERMISOS ESPECIFICOS en cada caso
+	#En caso de "failed to register layer: Error processing tar file(exit status 1) no space left on device"
+	free -m
+	vgdisplay
+	lvextend -l +100% /dev/ubuntu-vg/ubuntu-lv
+	resize /dev/mapper/ubuntu--vg-ubuntu-lg
 	sudo make #dev/prod
 
 	#server: http://localhost:8080/
