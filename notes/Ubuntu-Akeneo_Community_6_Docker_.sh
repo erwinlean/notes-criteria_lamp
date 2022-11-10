@@ -1,16 +1,3 @@
-# nodejs ≥ 14
-	sudo apt-get install curl
-	sudo curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
-	sudo bash nodesource_setup.sh
-	sudo apt-get install -y nodejs
-	nodejs -v
-
-# yarn ≥ 1.22
-	sudo -i
-	sudo curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-	sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-	sudo apt update && apt-get install yarn
-
 # make
 	sudo apt update
 	sudo apt install make
@@ -41,13 +28,17 @@
     -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
     akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
     akeneo/pim-community-standard /srv/pim "6.0.*@stable"
-    	sudo chmod 777 /home/usuario_EJEMPLO/pim 
+	sudo make #dev o prod
+	
+	sudo chmod 777 /home/usuario_EJEMPLO/pim 
 	sudo find / -iname ".cache" #o yarn
+	sudo find / iname "cypress"
+	sudo chmod 777 #carpetas con .cache/cypress
 	#verificar los permisos de .cache/yarn, etc y ejecutar segun corresponda
 	#sudo chown usuario posicion/de/la/carpeta/que/se/encontro
 	#sudo chmod 777 posicion/de/la/carpeta/que/se/encontro
-	#VER PERMISOS ESPECIFICOS en ca
-	sudo make #dev o prod
+	#VER PERMISOS ESPECIFICOS en cada caso
+	sudo make #dev/prod
 
 	#server: http://localhost:8080/
 	#user: admin
