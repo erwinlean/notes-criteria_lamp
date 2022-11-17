@@ -41,10 +41,14 @@
 	#VER PERMISOS ESPECIFICOS en cada caso
 	#En caso de "failed to register layer: Error processing tar file(exit status 1) no space left on device"
 	free -m
-	vgdisplay
-	lvextend -l +100% /dev/ubuntu-vg/ubuntu-lv
-	resize /dev/mapper/ubuntu--vg-ubuntu-lg
-	sudo make #dev/prod
+	sudp vgdisplay
+	#o
+	sudo pvdisplay 
+	sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+	sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+	sudp vgdisplay
+	#o
+	sudo pvdisplay 
 
 	#server: http://localhost:8080/
 	#user: admin
