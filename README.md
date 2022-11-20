@@ -7,5 +7,5 @@ Especificaciones:
   - Mediante Comando linux formar:
     - Akeneo
     - Magento
+    - PimCore
     - Connectores
- 
