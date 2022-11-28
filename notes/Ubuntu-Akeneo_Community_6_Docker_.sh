@@ -23,26 +23,33 @@
 	
 	mkdir pim
 	cd pim
-	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
-	chmod -R 777 /carpeta de instalacion/pim #ejemplo /home/erwin/Desktop/pim
+	#Evitar problemas de accesos/usuarios y permisos:
+	chown -R root /home/erwin/Desktop/pim
+	chmod -R 755 /home/erwin/Desktop/pim #o -R 777
 	sudo docker run -ti -u www-data --rm \
     -e COMPOSER_MEMORY_LIMIT=4G \
     -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
     akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
     akeneo/pim-community-standard /srv/pim "6.0.*@stable"
-    	#sudo docker run -ti --rm \ -e COMPOSER_MEMORY_LIMIT=4G \ -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \ akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \ akeneo/pim-community-standard /srv/pim "6.0.*@stable"
 	sudo make #dev o prod
 	
-	#En caso de error de permisos/access denied
+	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
+	#Eliminar en docker: -u www.-data
+	sudo docker run -ti --rm \
+    -e COMPOSER_MEMORY_LIMIT=4G \
+    -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
+    akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
+    akeneo/pim-community-standard /srv/pim "6.0.*@stable"
+	
+	#De persistir error de permisos:
 	sudo find / -iname ".cache" #o yarn
 	sudo find / iname "cypress"
-	sudo chmod 777 #carpetas con .cache/cypress
-	#verificar los permisos de .cache/yarn, etc y ejecutar segun corresponda
-	#sudo chown usuario posicion/de/la/carpeta/que/se/encontro
-	#sudo chmod 777 posicion/de/la/carpeta/que/se/encontro
-	#VER PERMISOS ESPECIFICOS en cada caso
+	#Ejecutar permisos necesario, analizando respuestas y carpetas especificas, ejemplos:
+	chmod -R 777 /root/.cache/
+	chmod -R 755 /home/.cache
 	
 	#En caso de "failed to register layer: Error processing tar file(exit status 1) no space left on device"
+	#Ampliar el espacio de uso al 100%
 	free -m
 	#o
 	sudp vgdisplay
