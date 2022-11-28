@@ -20,19 +20,21 @@
 	sudo docker-compose version
 
 # Instalacion akeneo PIM
+	
 	mkdir pim
 	cd pim
-	#error de usuario, eliminar -u www-data en caso de error:
-	#Could not delete /srv/pim:
+	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
+	chmod -R 777 /carpeta de instalacion/pim #ejemplo /home/erwin/Desktop/pim
+	chmod -R 777 /carpeta de instalacion
 	sudo docker run -ti -u www-data --rm \
     -e COMPOSER_MEMORY_LIMIT=4G \
     -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \
     akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \
     akeneo/pim-community-standard /srv/pim "6.0.*@stable"
-    #sudo docker run -ti --rm \ -e COMPOSER_MEMORY_LIMIT=4G \ -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \ akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \ akeneo/pim-community-standard /srv/pim "6.0.*@stable"
+    	#sudo docker run -ti --rm \ -e COMPOSER_MEMORY_LIMIT=4G \ -v $(pwd):/srv/pim -v ~/.composer:/var/www/.composer -w /srv/pim \ akeneo/pim-php-dev:6.0 php /usr/local/bin/composer create-project \ akeneo/pim-community-standard /srv/pim "6.0.*@stable"
 	sudo make #dev o prod
 	
-	sudo chmod 777 /home/usuario_EJEMPLO/pim 
+	#En caso de error de permisos/access denied
 	sudo find / -iname ".cache" #o yarn
 	sudo find / iname "cypress"
 	sudo chmod 777 #carpetas con .cache/cypress
@@ -40,8 +42,10 @@
 	#sudo chown usuario posicion/de/la/carpeta/que/se/encontro
 	#sudo chmod 777 posicion/de/la/carpeta/que/se/encontro
 	#VER PERMISOS ESPECIFICOS en cada caso
+	
 	#En caso de "failed to register layer: Error processing tar file(exit status 1) no space left on device"
 	free -m
+	#o
 	sudp vgdisplay
 	#o
 	sudo pvdisplay 
