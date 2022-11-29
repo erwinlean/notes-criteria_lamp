@@ -39,20 +39,21 @@
 	#Unzip/extraer archivo descargado
 	#En la carpeta/path donde se descomprimio o ingresandole el path exacto ejecuta ngrok > en caso de realizar otras operaciones ./ngrok help
 	./ngrok config add-authtoken my_token_from_ngrok_website
-	./ngrok http 8080
-	#Servidor online para testear: Forwarding       https://example-181-117-15-25.sa.ngrok.io
-	#Click en "visit site"
 	cd /root/.config/ngrok
 	nano ngrok.yml
 	#Agregar Tunnel, para inicializar el tunnel con ./gnrok start nombre_del_tunnel configurado
 	#Completar el archivo ngrok.yml
 	api_key: 2IELv6Hv4k56yQvE5HC8d0e3J7A_4vGuikEa89njhQaxkkcx8
 	tunnels:
-		nombre_tunnel:
+		nombre_del_tunnel:
 				proto:http
 				addr: 8080 #Puerto, en caso de docker akeneo, este se encuentra por default en 8080
 				basic_auth: 
       					   - "nombre:password" #Para entrar si se desea tunnel privado que pida autorizacion
+	cd path/ubicacion/exe_ngrok
+	./ngrok start nombre_del_tunnel
+	#Servidor online para testear: Forwarding       https://example-181-117-15-25.sa.ngrok.io
+	#Click en "visit site"
 	
 	### Errores:
 	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
