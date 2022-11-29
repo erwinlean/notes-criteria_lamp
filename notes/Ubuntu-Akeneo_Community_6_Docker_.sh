@@ -42,6 +42,10 @@
 	./ngrok http 8080
 	#Servidor online para testear: Forwarding       https://example-181-117-15-25.sa.ngrok.io
 	#Click en "visit site"
+	cd /root/.config/ngrok
+	nano ngrok.yml
+	#Agregar Tunnel, para que este sea estatico
+	
 	
 	###Errores:
 	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
@@ -53,8 +57,8 @@
     akeneo/pim-community-standard /srv/pim "6.0.*@stable"
 	
 	#De persistir error de permisos:
-	sudo find / -iname ".cache" #o yarn
-	sudo find / iname "cypress"
+	sudo find / -iname ".cache" #o yarn .yarn
+	sudo find / -iname "cypress"
 	#Ejecutar permisos necesario, analizando respuestas y carpetas especificas, ejemplos:
 	chmod -R 777 /root/.cache/
 	chmod -R 755 /home/.cache
