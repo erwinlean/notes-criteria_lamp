@@ -41,6 +41,7 @@
 	./ngrok config add-authtoken my_token_from_ngrok_website
 	./ngrok http 8080
 	#Servidor online para testear: Forwarding       https://example-181-117-15-25.sa.ngrok.io
+	#Click en "visit site"
 	
 	###Errores:
 	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
