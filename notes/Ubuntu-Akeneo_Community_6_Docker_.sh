@@ -33,6 +33,15 @@
     akeneo/pim-community-standard /srv/pim "6.0.*@stable"
 	sudo make #dev o prod
 	
+	#Connect via tunnel
+	#install https://ngrok.com/ for the operative system/processor (CPU - bits)
+	#Install https://ngrok.com/ segun systema operativo (CPU - bits)
+	#Unzip/extraer archivo descargado
+	./ngrok config add-authtoken my_token_from_ngrok_website
+	./ngrok http 8080
+	#Servidor online para testear: Forwarding       https://example-181-117-15-25.sa.ngrok.io
+	
+	###Errores:
 	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
 	#Eliminar en docker: -u www.-data
 	sudo docker run -ti --rm \
