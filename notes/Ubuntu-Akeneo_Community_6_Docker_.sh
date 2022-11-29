@@ -37,6 +37,7 @@
 	#install https://ngrok.com/ for the operative system/processor (CPU - bits)
 	#Install https://ngrok.com/ segun systema operativo (CPU - bits)
 	#Unzip/extraer archivo descargado
+	#En la carpeta/path donde se descomprimio o ingresandole el path exacto ejecuta ngrok > en caso de realizar otras operaciones ./ngrok help
 	./ngrok config add-authtoken my_token_from_ngrok_website
 	./ngrok http 8080
 	#Servidor online para testear: Forwarding       https://example-181-117-15-25.sa.ngrok.io
