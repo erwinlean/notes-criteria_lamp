@@ -44,10 +44,17 @@
 	#Click en "visit site"
 	cd /root/.config/ngrok
 	nano ngrok.yml
-	#Agregar Tunnel, para que este sea estatico
+	#Agregar Tunnel, para inicializar el tunnel con ./gnrok start nombre_del_tunnel configurado
+	#Completar el archivo ngrok.yml
+	api_key: 2IELv6Hv4k56yQvE5HC8d0e3J7A_4vGuikEa89njhQaxkkcx8
+	tunnels:
+		nombre_tunnel:
+				proto:http
+				addr: 8080 #Puerto, en caso de docker akeneo, este se encuentra por default en 8080
+				basic_auth: 
+      					   - "nombre:password" #Para entrar si se desea tunnel privado que pida autorizacion
 	
-	
-	###Errores:
+	### Errores:
 	#En caso de error de usuario, eliminar -u www-data en caso de error: Could not delete /srv/pim:
 	#Eliminar en docker: -u www.-data
 	sudo docker run -ti --rm \
