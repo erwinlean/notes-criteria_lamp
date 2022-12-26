@@ -13,7 +13,11 @@ bin/console cache:warmup
 yarn install # Only on first minor upgrade if yarn is already installed, proceed
 yarn run less
 yarn run webpack # May show errors, to review
-make upgrade-front
+#yarn --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system install --frozen-lockfile
+#yarn --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system run lib:build
+#make upgrade-front NO_DOCKER=true
+#make upgrade-front
+# The last 4 lines, to check if that make the webpack errors go away
 # May need restart the server then
 shutdown –r now
 sudo /opt/bitnami/ctlscript.sh start
