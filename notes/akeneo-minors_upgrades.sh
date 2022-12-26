@@ -1,5 +1,5 @@
 cd app/path
-sudo composer --prefer-dist update
+composer --prefer-dist update #sudo come with error, just run normal user
 sudo apt-get update
 composer licenses
 sudo /opt/bitnami/ctlscript.sh stop
