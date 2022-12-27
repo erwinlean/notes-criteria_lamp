@@ -1,28 +1,31 @@
 cd app/path
 composer --prefer-dist update #sudo come with error, just run normal user
-sudo apt-get update
 composer licenses
-sudo su #log as super user
-/opt/bitnami/ctlscript.sh stop
-sudo php bin/console cache:clear
+# Or check composer.lock version
+sudo /opt/bitnami/ctlscript.sh stop # For Bitnami
+service php8.0-fpm restart # For Akeneo manually installed
+# Or simple restart
 # If error for permisons appears after cache clear > chmod -R 775 var/cache
 rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
-rm yarn.lock
+rm yarn.lock # May not be necessary
 sudo bin/console pim:installer:assets
 bin/console cache:warmup
-yarn install # Only on first minor upgrade if yarn is already installed, proceed
+yarn install
 yarn run less
-yarn run webpack # May show errors, to review
+yarn run webpack
+# In case of error with "yarn run webpack":
 #yarn --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system install --frozen-lockfile
 #yarn --cwd=vendor/akeneo/pim-community-dev/akeneo-design-system run lib:build
 #make upgrade-front NO_DOCKER=true
 #make upgrade-front
+sudo php bin/console cache:clear
 # The last 4 lines, to check if that make the webpack errors go away
 # May need restart the server then
-shutdown –r now
-sudo /opt/bitnami/ctlscript.sh start
+# In case ctlscript.sh stopped
 sudo /opt/bitnami/ctlscript.sh status
-# Check version with
+shutdown –r now
+# If not started automatically
+sudo /opt/bitnami/ctlscript.sh start
+# Re check the version
 cd app/path
 nano composer.lock
-# Find akeneo to see the version
