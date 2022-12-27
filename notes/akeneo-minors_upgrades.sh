@@ -10,7 +10,7 @@ rm -rf var/cache/* ./public/bundles/* ./public/css/* ./public/js/*
 rm yarn.lock # May not be necessary
 sudo bin/console pim:installer:assets
 bin/console cache:warmup
-yarn install
+yarn install # sudo bin/console pim:installer:dumb-require-path
 yarn run less
 yarn run webpack
 # In case of error with "yarn run webpack":
