@@ -29,3 +29,5 @@ sudo /opt/bitnami/ctlscript.sh start
 # Re check the version
 cd app/path
 nano composer.lock
+
+# Error 500 after upgrading, and clear cache isn’t working, try to clear the apc cache with a php script or restart Apache/Web server.
